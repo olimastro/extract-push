@@ -10,7 +10,7 @@ parser.add_argument('tfrpath', type=str,
 parser.add_argument('jpgspath', type=str,
                     help='path where to dump all the jpgs')
 parser.add_argument('--file-prefix', type=str, default='push-jpgs',
-                    help='prefix of file for all processed examples')
+                    help='prefix of directory for all processed examples')
 args = parser.parse_args()
 
 tfr_dir = os.path.abspath(args.tfrpath)
