@@ -28,8 +28,10 @@ out_dir = os.path.abspath(args.jpgspath)
 # Could be a better way???!!! tfrecords doc == crap.
 
 i = 0
+k = 0
 for tfrecord in os.listdir(tfr_dir):
     print "Processing tfrecord", tfrecord
+    print "Remaining", len(os.listdir(tfr_dir)) - k
     for tfrecord_iterated in tf.python_io.tf_record_iterator(os.path.join(tfr_dir, tfrecord)):
         this_exp_dir = os.path.join(out_dir, args.file_prefix + '-' + str(i))
         os.makedirs(this_exp_dir)
@@ -49,3 +51,5 @@ for tfrecord in os.listdir(tfr_dir):
             img.save(os.path.join(this_exp_dir, 'image-{}.jpg'.format(j)), "JPEG")
             j += 1
         i += 1
+    k += 1
+    print
